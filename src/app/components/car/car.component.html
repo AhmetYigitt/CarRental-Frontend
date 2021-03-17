@@ -26,7 +26,7 @@
 
 <div class="row" *ngIf="dataLoaded==true">
   <div *ngFor="let car of cars" class="card border-primary mb-3" style="width: 17rem;">
-    <img src="https://localhost:44356/{{car.imagePath}}" class= "card-img-top" alt="...">
+    <img src="https://localhost:44356/{{car.imagePath}}" class= "card-img-top" style="height: auto; width: auto; ;" alt="...">
     <div class="card-body">
      <h5 class="card-title">{{ car.description }}</h5>
    </div>
