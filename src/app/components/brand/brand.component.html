@@ -1,17 +1,36 @@
 
    
-    <ul *ngIf="dataLoaded == true" class="list-group">
+     <!-- <ul *ngIf="dataLoaded == true" class="list-group">
       <li [class]= "getAllBrandClass()" routerLink= "/cars" > Tüm Arabalar</li>
     
       <li class="list-group-item list-group-item-dark" >Markalar</li>
     
       <li (click)="setCurrentBrand(brand)" routerLink= "/cars/brand/{{brand.id}}"
        *ngFor="let brand of brands" [class]= "getCurrentBrandClass(brand)">{{ brand.brandName }}</li>
+    </ul>   -->
 
-       
     
-    </ul>
+ 
+    <div class="mb-3">
+      <button type="button" class="btn btn-dark" routerLink="/cars">Tüm Arabalar</button>
+    </div>
 
+    <div class="card mb-3">
+      <div class="card-header">Markalar</div>
+      <div class="card-body">
+         
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Renk Ara" [(ngModel)]="brandFilterText"/>
+        </div>
+        
+        <select [(ngModel)]="selectedBrand" class="form-select mb-3" >
+          
 
-
-
+            <option *ngFor="let brand of brands | brandFilter:brandFilterText" value="{{ brand.id }}" [selected]="getSelectedBrand(brand.id)">{{brand.brandName}}</option>
+          </select>
+          
+      </div>
+      <div class="card-header">
+        <a  class="btn btn-success" style="display: block" routerLink="/cars/brand/{{selectedBrand}}">Filtrele</a>
+      </div>
+    </div> 

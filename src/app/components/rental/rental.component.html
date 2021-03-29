@@ -1,24 +1,72 @@
-<div *ngIf="dataLoaded == false" class="d-flex justify-content-center">
-    <div class="spinner-border" role="status">
-      <span class="visually-hidden">Loading...</span>
+
+
+
+
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="row ">
+      <div  class="card border-primary mb-3" style="width: 17rem;">
+        <img src="https://localhost:44356/{{car.imagePath}}" class= "card-img-top" style="height: auto; width: auto; ;" alt="...">
+        <div class="card-body">
+         <h5 class="card-title">{{ car.description }}</h5>
+       </div>
+        <ul class="list-group list-group-flush">
+         <li class="list-group-item">Marka: {{ car.brandName }} </li>
+         <li class="list-group-item">Renk: {{ car.colorName }}</li>
+         <li class="list-group-item">Model Yılı: {{ car.modelYear }}</li>
+         <li class="list-group-item">Günlük Fiyat: {{ car.dailyPrice | currency: 'TRY': "symbol-narrow":"1.2-2" }}</li>
+       </ul>
+       <div class="card-body">
+        
+        
+        </div>
+        
+      </div>
     </div>
+    
+    
+    
   </div>
-  <table *ngIf="dataLoaded == true" class="table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Marka</th>
-        <th>Müşteri İsmi</th>
-        <th>Kiralama Tarihi</th>
-        <th>Teslim Tarihi</th>
-      </tr>
-    </thead>
-    <tr *ngFor="let rental of rentals">
-      <td>{{ rental.rentalId }}</td>
-      <td>{{ rental.brandName }}</td>
-      <td>{{ rental.customerName }}</td>
-      <td>{{ rental.rentDate }}</td>
-      <td>{{ rental.returnDate }}</td>
-    </tr>
-  </table>
   
+  <div class="col-md-8">
+    <div class="md-3">
+      <div class="form-group row">
+        <label for="customerSelect" class="col-3 col-form-label sizes">Müşteriler:</label>
+        <div class="col-9">
+          <select [(ngModel)]="customerId" id="customerSelect" class="form-select" aria-label="Müşteriler" >
+            <option [value]="customer.customerId" *ngFor="let customer of customers"  >{{ customer.customerName }}  |
+              {{ customer.companyName }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="md-3">
+      <div class="form-group row">
+        <label for="rentDate" class="col-3 col-form-label sizes">Alış Tarihi:</label>
+        <div class="col-9">
+          <input class="form-control" type="datetime-local" id="rentDate" [(ngModel)]="rentDate" >
+        </div>
+      </div>
+    </div>
+    <div class="md-3">
+      <div class="form-group row">
+        <label for="returnDate" class="col-3 col-form-label sizes">Teslim Tarihi: | requared</label>
+        <div class="col-9">
+          <input class="form-control" type="datetime-local" id="returnDate" [(ngModel)]="returnDate">
+        </div>
+      </div>
+    </div>
+    <div class="md-3">
+      <div class="action">
+        <button (click)="carRentalRequest(car)" type="button" class="btn btn-outline-primary">Kirala</button>
+      </div>
+    </div>
+    
+
+
+    
+    
+  </div>
+</div>

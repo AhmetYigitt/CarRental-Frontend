@@ -1,10 +1,28 @@
 
  
-  <ul *ngIf="dataLoaded==true" class="list-group">
+ <!--  <ul *ngIf="dataLoaded==true" class="list-group">
     <li class="list-group-item list-group-item-dark" >Renkler</li>
 
     <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}" *ngFor="let color of colors;" 
     [class]="getCurrentColorClass(color)" >{{ color.colorName }}</li>
 
-</ul>
+</ul> -->
+
+<div class="card mb-3">
+  <div class="card-header">Renkler</div>
+  <div class="card-body">
+
+
+    <select [(ngModel)]="selectedColor" class="form-select mb-3" aria-label="Default select example">
+      <option selected>Renk Seç</option>
+      <option *ngFor="let color of colors" value="{{ color.id }}">
+        {{ color.colorName }}
+      </option>
+    </select>
+      
+  </div>
+  <div class="card-header">
+    <a  class="btn btn-success" style="display: block" routerLink="/cars/color/{{selectedColor}}">Filtrele</a>
+  </div>
+</div> 
 

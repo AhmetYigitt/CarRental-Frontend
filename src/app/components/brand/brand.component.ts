@@ -11,6 +11,8 @@ export class BrandComponent implements OnInit {
   brands: Brand[] = [];
   dataLoaded = false;
   currentBrand: Brand;
+  selectedBrand:number;
+  brandFilterText:string
 
   constructor(private brandService: BrandService) {}
 
@@ -24,23 +26,32 @@ export class BrandComponent implements OnInit {
     });
   }
 
-  setCurrentBrand(brand:Brand){
-    this.currentBrand= brand;
+  setCurrentBrand(brand: Brand) {
+    this.currentBrand = brand;
   }
 
-  getCurrentBrandClass(brand: Brand){
-    if(brand == this.currentBrand){
-      return "list-group-item active";
-    }else{
-      return "list-group-item";
+  getCurrentBrandClass(brand: Brand) {
+    if (brand == this.currentBrand) {
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
     }
   }
 
-  getAllBrandClass(){
-    if(!this.currentBrand){
-      return "list-group-item active"
-    }else{
-      return "list-group-item";
+  getAllBrandClass() {
+    if (!this.currentBrand) {
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
+    }
+  }
+
+  getSelectedBrand(brandId: Number) {
+    if (this.selectedBrand == brandId) {
+      return true;
+    }
+    else {
+      return false;
     }
   }
 }
