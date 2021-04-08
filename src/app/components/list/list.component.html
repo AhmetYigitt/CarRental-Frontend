@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+
+
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-dark"> Görüntülemek istediğinizi seçiniz</li>
+        <li (click)=setCurrentChoice(tempCar)   [class]="getCurrentClass(tempCar)">Arabalar</li>
+        <li (click)=setCurrentChoice(tempBrand) [class]="getCurrentClass(tempBrand)">Markalar</li>
+        <li (click)=setCurrentChoice(tempColor) [class]="getCurrentClass(tempColor)">Renkler</li>
+      </ul>
+
+
+    </div>
+
+    <div class="col-md-10">
+
+
+        <table *ngIf="currentChoice == tempBrand" class="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Marka</th>
+                <th></th>
+                <th>
+                  <button type="button" class="btn btn-success" routerLink="/brand/add">Marka Ekle</button>
+                </th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let brand of brands">
+                <td>{{ brand.id }}</td>
+                <td>{{ brand.brandName }}</td>
+                <td>
+                  <button type="button" class="btn btn-warning" routerLink="/brand/update/{{brand.id}}">Güncelle</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-danger" (click)="deleteBrand(brand)">Sil</button>
+                </td>
+              </tr>
+            </tbody>
+          </table> 
+
+
+       <table *ngIf="currentChoice == tempCar" class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Marka</th>
+      <th>Renk</th>
+      <th>Model Yılı</th>
+      <th>Günlük Fiyat</th>
+      <th>Açıklama</th>
+      <th>
+        <button type="button" class="btn btn-success" routerLink="/car/add">Araba Ekle</button>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of cars">
+      <td>{{ car.carId }}</td>
+      <td>{{ car.brandName }}</td>
+      <td>{{ car.colorName }}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.dailyPrice }}</td>
+      <td>{{ car.description }}</td>
+      <td>
+        <button type="button" class="btn btn-warning" routerLink="/car/update/{{car.carId}}">Güncelle</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="deleteCar(car)">Sil</button>
+      </td>
+    </tr>
+  </tbody>
+  
+</table> 
+
+<table *ngIf="currentChoice == tempColor" class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Renk</th>
+        <th></th>
+        <th>
+          <button type="button" class="btn btn-success" routerLink="/color/add">Renk Ekle</button>
+        </th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let color of colors">
+        <td>{{ color.id }}</td>
+        <td>{{ color.colorName }}</td>
+        <td>
+          <button type="button" class="btn btn-warning" routerLink="/color/update/{{color.id}}">Güncelle</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)=deleteColor(color)>Sil</button>
+        </td>
+      </tr>
+    </tbody>
+    
+  </table> 
+
+    </div>
+  </div>
+</div>

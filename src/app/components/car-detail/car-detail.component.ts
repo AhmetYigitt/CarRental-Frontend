@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Car } from 'src/app/models/car';
+import { CarDetail } from 'src/app/models/car-detail';
 import { CarImage } from 'src/app/models/carImage';
 import { CarDetailByIdService } from 'src/app/services/car-detail-by-id.service';
 import { CarImagesByIdService } from 'src/app/services/car-images-by-id.service';
@@ -12,7 +12,7 @@ import { CarImagesByIdService } from 'src/app/services/car-images-by-id.service'
 })
 export class CarDetailComponent implements OnInit {
 
-  carDetails: Car;
+  carDetails: CarDetail;
   carImages:CarImage[]=[];
 
   constructor(private carDetailByIdService: CarDetailByIdService,

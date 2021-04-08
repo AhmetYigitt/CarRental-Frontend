@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Car } from 'src/app/models/car';
+import { CarDetail } from 'src/app/models/car-detail';
 import { Customer } from 'src/app/models/customer';
 import { Rental } from 'src/app/models/rental';
 import { RentalAdd } from 'src/app/models/rental-add';
@@ -20,7 +20,7 @@ export class RentalComponent implements OnInit {
   dataLoaded = false;
   rentDate: Date;
   returnDate: Date;
-  car: Car={brandName:"",imagePath:"", colorName:"",dailyPrice:0,description:"",modelYear:0, carId:0};
+  car: CarDetail={brandName:"",imagePath:"", colorName:"",dailyPrice:0,description:"",modelYear:0, carId:0};
   customerId: number;
   customers: Customer[];
   totalAmaount: number;
@@ -56,7 +56,7 @@ export class RentalComponent implements OnInit {
     });
   }
 
-  carRentalRequest(car: Car) {
+  carRentalRequest(car: CarDetail) {
     let rentalCar: RentalAdd = {
       CarId: car.carId,
       customerId: parseInt(this.customerId.toString()),

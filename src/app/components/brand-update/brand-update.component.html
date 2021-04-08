@@ -1,0 +1,78 @@
+
+<!-- <div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                
+                <tr>
+                    <td><h5 class="title">Marka Güncelle</h5></td>
+                    <td><h5><button type="button" class="btn btn-outline-secondary" routerLink="/list">Geri dön</button></h5></td>
+                    </tr>
+                    
+                    
+                
+                
+            </div>
+            <div class="card-body">
+
+                
+                
+                <form [formGroup]="brandUpdateForm" >
+
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="id">Marka Id</label>
+                            <input class="form-control" type="number" value="{{brand.id}}" aria-label="readonly input example" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="brandName">Marka Adı</label>
+                            <input type="text"  value="{{brand.brandName}}" formControlName="brandName" class="form-control" />
+                        </div>
+                    </div>
+                   
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)=update()  >Güncelle</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="card">
+    <div class="card-header"><h5 class="title font-weight-bold">Marka</h5></div>
+  
+    <div class="card-body">
+  
+      <form [formGroup]="brandUpdateForm">
+        <div class="row">
+            <div class="mb-3">
+                <label>id</label>
+                <div class="form-group">
+                    <input class="form-control" type="number" value="{{brand?.id}}" aria-label="readonly input example" readonly>                  
+                </div>
+            </div>
+        </div>
+ 
+        <div class="row">
+            <div class="mb-3">
+                <label for="BrandName">Marka</label>
+                <div class="form-group">
+                    <input type="text" id="brandName" class="form-control" formControlName="brandName" value="{{brand?.brandName}}" />                   
+                </div>
+            </div>
+        </div>
+        
+
+      </form>
+  
+    </div>
+  
+    <div class="card-footer">
+      <button class="btn btn-fill btn-primary" (click)="update()"> Güncelle</button>
+    </div>
+ 
+  </div>

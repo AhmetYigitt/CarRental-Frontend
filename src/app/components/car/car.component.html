@@ -3,6 +3,45 @@
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
+
+
+<div class="row">
+  <div class="col-md-2">
+    <app-brand></app-brand>
+    <app-color></app-color>
+  </div>
+  <div class="col-md-10">
+    <div class="mb-3">
+      <label for="filterText" class="form-label">Araba Ara</label>
+      <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Ara">
+    </div>
+    
+    <div class="row " *ngIf="dataLoaded==true">
+      <div *ngFor="let car of cars | carFilter:filterText" class="card border-primary mb-3" style="width: 17rem;">
+        <img src="https://localhost:44356/{{car.imagePath}}" class= "card-img-top" style="height: 35%; width: auto; ;" alt="...">
+        <div class="card-body">
+         <h5 class="card-title">{{ car.description }}</h5>
+       </div>
+        <ul class="list-group list-group-flush">
+         <li class="list-group-item">Marka: {{ car.brandName }} </li>
+         <li class="list-group-item">Renk: {{ car.colorName }}</li>
+         <li class="list-group-item">Model Yılı: {{ car.modelYear }}</li>
+         <li class="list-group-item">Günlük Fiyat: {{ car.dailyPrice | currency: 'TRY': "symbol-narrow":"1.2-2" }}</li>
+       </ul>
+       <div class="card-body">
+        <section style="float:left">
+          <button routerLink="/cars/car-detail/{{car.carId}}" type="button" class="btn btn-primary">Detaylar</button>
+        </section>
+        
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <!-- <table *ngIf="dataLoaded == true" class="table">
   <thead>
     <tr>
@@ -24,29 +63,4 @@
   </tr>
 </table> -->
 
-<div class="mb-3">
-  <label for="filterText" class="form-label">Araba Ara</label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Ara">
-</div>
 
-<div class="row " *ngIf="dataLoaded==true">
-  <div *ngFor="let car of cars | carFilter:filterText" class="card border-primary mb-3" style="width: 17rem;">
-    <img src="https://localhost:44356/{{car.imagePath}}" class= "card-img-top" style="height: auto; width: auto; ;" alt="...">
-    <div class="card-body">
-     <h5 class="card-title">{{ car.description }}</h5>
-   </div>
-    <ul class="list-group list-group-flush">
-     <li class="list-group-item">Marka: {{ car.brandName }} </li>
-     <li class="list-group-item">Renk: {{ car.colorName }}</li>
-     <li class="list-group-item">Model Yılı: {{ car.modelYear }}</li>
-     <li class="list-group-item">Günlük Fiyat: {{ car.dailyPrice | currency: 'TRY': "symbol-narrow":"1.2-2" }}</li>
-   </ul>
-   <div class="card-body">
-    <section style="float:left">
-      <button routerLink="/cars/car-detail/{{car.carId}}" type="button" class="btn btn-primary">Detaylar</button>
-    </section>
-    
-    </div>
-    
-  </div>
-</div>

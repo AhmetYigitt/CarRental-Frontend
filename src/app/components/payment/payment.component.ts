@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Car } from 'src/app/models/car';
+import { CarDetail } from 'src/app/models/car-detail';
 import { Payment } from 'src/app/models/payment';
 import { RentalAdd } from 'src/app/models/rental-add';
 import { PaymentService } from 'src/app/services/payment.service';
@@ -13,7 +13,7 @@ import { RentalService } from 'src/app/services/rental.service';
 })
 export class PaymentComponent implements OnInit {
 
-  car: Car
+  car: CarDetail;
   carToBeRented:RentalAdd;
   payment:Payment;
 
@@ -47,7 +47,7 @@ export class PaymentComponent implements OnInit {
       amountPaye : this.amountPaye
     }
 
-    console.log(this.payment);
+    
 
     this.paymentService.addPayment(this.payment).subscribe((response)=>{
       this.toastrService.success("ödeme başarılı");

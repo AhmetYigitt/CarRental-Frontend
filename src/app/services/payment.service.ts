@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Car } from '../models/car';
+import { CarDetail } from '../models/car-detail';
 import { Payment } from '../models/payment';
 import { RentalAdd } from '../models/rental-add';
 import { ResponseModel } from '../models/responseModel';
@@ -13,7 +13,7 @@ export class PaymentService {
 
   rentedCar:RentalAdd
   totalAmaount:number;
-  car:Car
+  car:CarDetail
 
   apiUrl="https://localhost:44356/api/payments/"
 
@@ -21,7 +21,7 @@ export class PaymentService {
 
 
 
-  setRental(rentedCar:RentalAdd, totalAmaount:number, car:Car){
+  setRental(rentedCar:RentalAdd, totalAmaount:number, car:CarDetail){
     this.rentedCar=rentedCar;
     this.totalAmaount=totalAmaount
     this.car=car
