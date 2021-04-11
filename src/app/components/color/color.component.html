@@ -13,9 +13,13 @@
   <div class="card-body">
 
 
+    <div class="mb-3">
+      <input type="text" class="form-control" placeholder="Renk Ara" [(ngModel)]="colorFilterText"/>
+    </div>
+
+
     <select [(ngModel)]="selectedColor" class="form-select mb-3" aria-label="Default select example">
-      <option selected>Renk Seç</option>
-      <option *ngFor="let color of colors" value="{{ color.id }}">
+      <option *ngFor="let color of colors | colorFilter:colorFilterText" selected="value" value="{{ color.id }}">
         {{ color.colorName }}
       </option>
     </select>

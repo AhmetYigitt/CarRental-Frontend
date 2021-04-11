@@ -7,9 +7,12 @@
             <div class="card-body">
                 <form [formGroup]="carUpdateForm">
 
-                    <div class="row">
-                        <div class="mb-3">
-                            <label>id</label>
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <label>Id</label>
+                            
+                        </div>
+                        <div class="col-lg">
                             <div class="form-group">
                                 <input class="form-control" type="number" value="{{car?.id}}" aria-label="readonly input example" readonly>                  
                             </div>
@@ -21,7 +24,7 @@
                             <label for="brandSelect" class="form-label">Marka:</label>
                         </div>
                         <div class="col-lg">
-                            <select id="brandSelect" class="form-select" size="3" formControlName="brandId">
+                            <select id="brandSelect" class="form-select form-select-sm" size="3" formControlName="brandId" aria-label=".form-select-sm example">
                                 <option selected>Marka seçin</option>
                                 <option *ngFor="let brand of brands" value="{{brand.id}}">{{brand.brandName}}
                                 </option>
@@ -66,7 +69,6 @@
                             <textarea class="form-control" id="descriptionInput" rows="3" formControlName="description"
                                 placeholder="Açıklama...">
                                 
-  
                             </textarea>
                         </div>
                     </div>

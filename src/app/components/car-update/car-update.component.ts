@@ -81,7 +81,6 @@ export class CarUpdateComponent implements OnInit {
       this.carUpdateForm.get('dailyPrice')?.setValue(this.car.dailyPrice);
       this.carUpdateForm.get('description')?.setValue(this.car.description);
       this.carUpdateForm.get('modelYear')?.setValue(this.car.modelYear);
-      console.log(this.carUpdateForm)
     });
   }
 
@@ -95,11 +94,14 @@ export class CarUpdateComponent implements OnInit {
       carModel.brandId = parseInt(carModel.brandId);
       carModel.colorId = parseInt(carModel.colorId);
       carModel.modelYear = parseInt(carModel.modelYear);
-      console.log(carModel)
 
       this.carService.update(carModel).subscribe(response => {
         this.toastrService.success("Araba başarıyla güncellendi.");
-        this.toastrService.info("Arabalar düzenleme sayfasına yönlendiriliyorsunuz.");
+        this.toastrService.info("Ekle-Güncelle-Sil Sayfasına Yönlendiriliyorsunuz")
+        setTimeout(() => {
+          this.router.navigate(["/list"])
+          
+        }, 750);
       }, responseError => {
         if (responseError.error.Errors.length > 0) {
           for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {

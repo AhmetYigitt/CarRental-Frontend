@@ -1,36 +1,45 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">RentACar</a>
+      <a class="navbar-brand" routerLink="/">RentACar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" routerLink="/cars">Arabalar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/list">List</a>
+            <a class="nav-link" routerLink="/list">Ekle-Güncelle-Sil</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
+         
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        
+
+        
+        <ul *ngIf="isAuthenticated() && currentUser!=null" class="nav-item dropdown" style="color: blue;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{currentUser?.firstName + " " + currentUser?.lastName}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" >Profili Görüntüle</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" style="color: red;" routerLink="/cars" (click)="logout()" >Çıkış Yap</a></li>
+          </ul>
+        </ul>
+
+        <ul *ngIf="!isAuthenticated()" class="nav-item">
+          <button class="btn btn-success me-3" routerLink="/login"><strong>Giriş Yap</strong></button>
+          <button class="btn btn-primary" routerLink="/register"><strong>Kayıt Ol</strong></button>
+        </ul>
+
+        
+
+
       </div>
     </div>
   </nav>

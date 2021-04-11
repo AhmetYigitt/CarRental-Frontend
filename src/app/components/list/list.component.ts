@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
@@ -26,7 +27,8 @@ export class ListComponent implements OnInit {
     private carService: CarService,
     private colorService: ColorService,
     private brandService: BrandService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -90,7 +92,7 @@ export class ListComponent implements OnInit {
       this.toastrService.success(response.message);
       setTimeout(() => {
         window.location.reload();
-      }, 1000);
+      }, 750);
     });
   }
 }

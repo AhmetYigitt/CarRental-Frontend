@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Customer } from 'src/app/models/customer';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-navi',
@@ -7,9 +11,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
 
-  constructor() { }
-
+ currentUser?:User
+  
+  constructor(
+    private authService:AuthService,
+    private localStorageService:LocalStorageService
+  ) { }
+  
   ngOnInit(): void {
+    if (this.isAuthenticated()) {
+      this.authService.setCurrentUser(localStorage.getItem("email") || "").subscribe((response)=>{
+        this.currentUser=response.data
+        
+      })
+    }
   }
+
+ 
+
+  isAuthenticated(){
+    if (this.authService.isAuthenticated()) {
+      return true;
+    }else{
+      return false
+    }
+  }
+
+  logout(){
+    
+    this.localStorageService.remove("token");
+    this.localStorageService.remove("email");
+  }
+
 
 }
