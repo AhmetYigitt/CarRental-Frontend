@@ -19,12 +19,6 @@ export class NaviComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
-    if (this.isAuthenticated()) {
-      this.authService.setCurrentUser(localStorage.getItem("email") || "").subscribe((response)=>{
-        this.currentUser=response.data
-        
-      })
-    }
   }
 
  
@@ -40,7 +34,11 @@ export class NaviComponent implements OnInit {
   logout(){
     
     this.localStorageService.remove("token");
-    this.localStorageService.remove("email");
+    this.localStorageService.removeCurrentUser();
+  }
+
+  getCurrentUser():User{
+   return this.localStorageService.getCurrentUser();
   }
 
 

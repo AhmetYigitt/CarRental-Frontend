@@ -20,9 +20,9 @@
         
 
         
-        <ul *ngIf="isAuthenticated() && currentUser!=null" class="nav-item dropdown" style="color: blue;">
+        <ul *ngIf="isAuthenticated()" class="nav-item dropdown" style="color: blue;">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {{currentUser?.firstName + " " + currentUser?.lastName}}
+            {{getCurrentUser().firstName}} {{getCurrentUser().lastName}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" >Profili Görüntüle</a></li>

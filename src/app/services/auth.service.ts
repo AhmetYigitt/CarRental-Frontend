@@ -36,7 +36,7 @@ export class AuthService {
     return this.httpClient.post<SingleResponsemodel<TokenModel>>(this.apiUrl+"register",registerModel)
   }
 
-  setCurrentUser(email?:string){
+  getCurrentUserByEmail(email?:string){
      return this.httpClient.get<SingleResponsemodel<User>>(this.userApiUrl+"getbymail?email="+email)
   }
 }

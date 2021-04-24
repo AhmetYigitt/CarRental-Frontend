@@ -1,11 +1,11 @@
-<div *ngIf="dataLoaded == false" class="d-flex justify-content-center">
+ <div *ngIf="dataLoaded == false" class="d-flex justify-content-center">
   <div class="spinner-border" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
 
 
-<div class="row">
+<div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col-md-2">
     <app-brand></app-brand>
     <app-color></app-color>
@@ -38,7 +38,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
 
 
 
@@ -62,5 +62,4 @@
     <td>{{ car.description }}</td>
   </tr>
 </table> -->
-
 

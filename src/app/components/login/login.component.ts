@@ -43,11 +43,14 @@ export class LoginComponent implements OnInit {
       let loginModel=Object.assign({},this.loginForm.value)
       this.authService.login(loginModel).subscribe((response)=>{
         this.toastrService.info(response.message)
-        this.localStrorageService.setItem("email",loginModel.email)
         this.localStrorageService.setItem("token",response.data.token);
+        this.authService.getCurrentUserByEmail(loginModel.email).subscribe(response=>{
+          this.localStrorageService.setCurrentUser(response.data)
+          
+        })
         setTimeout(() => {
-          this.router.navigate([""])
-        }, 750);
+          this.router.navigateByUrl("/")
+        }, 500);
       },responseError=>{
         this.toastrService.error(responseError.error)
       })
