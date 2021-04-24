@@ -11,7 +11,6 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class NaviComponent implements OnInit {
 
- currentUser?:User
   
   constructor(
     private authService:AuthService,
